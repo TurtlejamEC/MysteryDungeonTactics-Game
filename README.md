@@ -1,2 +1,2 @@
 # MysteryDungeonTactics
-Experimental project combining the gameplay of Pokémon Mystery Dungeon games and Final Fantasy Tactics
+Experimental project combining the gameplay of Pokémon Mystery Dungeon and Final Fantasy Tactics games
