@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public static class MapAlgorithms {
-    public static AlgorithmTile[][] BfsReturnRange (MapTile[][] map, MapPosition start, int range) {
+    public static AlgorithmTile[][] BfsReturnRange (MapTile[][] map, MapPosition start, int range, bool excludeOccupied, bool excludeWall) {
         // Set up resultMap board
         AlgorithmTile[][] resultMap = new AlgorithmTile[map.Length][];
         for (int i = 0; i < map.Length; i++) {
@@ -53,6 +53,9 @@ public static class MapAlgorithms {
                 if (resultMap[considering.Z][considering.X].Visited) {
                     continue;
                 }
+                
+                if (excludeOccupied && RawMapManager.Map[considering.Z][considering.X].CharacterId != -1) continue;
+                if (excludeWall && RawMapManager.Map[considering.Z][considering.X].TileId == 1) continue;
 
                 resultMap[considering.Z][considering.X].Visited = true;
                 resultMap[considering.Z][considering.X].Distance = resultMap[current.Z][current.X].Distance + 1;
@@ -67,9 +70,9 @@ public static class MapAlgorithms {
         List<AlgorithmTile> result = new List<AlgorithmTile>();
         for (int z = 0; z < map.Length; z++) {
             for (int x = 0; x < map[z].Length; x++) {
-                if (map[z][x].Visited) {
-                    result.Add(map[z][x]);
-                }
+                if (!map[z][x].Visited) continue;
+                
+                result.Add(map[z][x]);
             }
         }
 

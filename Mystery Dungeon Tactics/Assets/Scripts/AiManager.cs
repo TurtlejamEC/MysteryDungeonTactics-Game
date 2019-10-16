@@ -14,8 +14,10 @@ public class AiManager : MonoBehaviour {
 	    Character current = CharacterManager.ActiveCharacters[characterId];
 
 	    List<AlgorithmTile> possiblePositions = MapAlgorithms.ResultMapToAlgorithmTileList(
-		    MapAlgorithms.BfsReturnRange(RawMapManager.Map, current.Position, current.Movement)
+		    MapAlgorithms.BfsReturnRange(RawMapManager.Map, current.Position, current.Movement, true, true)
 		    );
+	    
+	    print(possiblePositions.Count);
 	    
 	    // Randomize list
 	    for (int i = possiblePositions.Count - 1; i >= 1; i--) {

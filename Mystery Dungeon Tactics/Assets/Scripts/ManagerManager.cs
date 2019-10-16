@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ public class ManagerManager : MonoBehaviour {
         MapPosition generatedPosition = RawMapManager.FindEmptyFloorPosition();
         newCharacter.Position = generatedPosition;
         newCharacter.Parent.transform.position = new Vector3(generatedPosition.X, 0, generatedPosition.Z);
-        RawMapManager.Map[generatedPosition.X][generatedPosition.Z].CharacterId = newCharacter.Id;
+        RawMapManager.Map[generatedPosition.Z][generatedPosition.X].CharacterId = newCharacter.Id;
         
         CharacterManager.AddCharacter(newCharacter);
         TurnManager.AddToProgressQueue(new ProgressQueueUnit(newCharacter.Id, 0));
@@ -51,19 +52,14 @@ public class ManagerManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         rmManager.GenerateMap();
-        rmManager.PrintMap();
-        AddCharacter(new Character("A", 1, 0, 3, Instantiate(sampleCharacter), true));
-        AddCharacter(new Character("B", 2, 1, 1, Instantiate(sampleCharacter), false));
-        AddCharacter(new Character("C", 3, 2, 2, Instantiate(sampleCharacter), false));
-        AddCharacter(new Character("D", 4, 3, 3, Instantiate(sampleCharacter), false));
-        AddCharacter(new Character("E", 5, 4, 4, Instantiate(sampleCharacter), false));
-        AddCharacter(new Character("F", 5, 5, 5, Instantiate(sampleCharacter), false));
+        rmManager.PrintMap(0);
+        AddCharacter(new Character("A", 1, 0, 10, Instantiate(sampleCharacter), true));
+        AddCharacter(new Character("B", 10, 1, 10, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("C", 10, 2, 10, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("D", 10, 3, 10, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("E", 10, 4, 10, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("F", 10, 5, 10, Instantiate(sampleCharacter), false));
+        rmManager.PrintMap(1);
         StartCoroutine(ProgressAndCompleteNextTurn());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

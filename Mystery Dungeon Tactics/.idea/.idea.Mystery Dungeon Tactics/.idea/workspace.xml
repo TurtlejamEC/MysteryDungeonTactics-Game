@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7131bfcd-d9b2-403f-aa38-a83578c69ac4" name="Default Changelist" comment="" />
@@ -9,9 +9,28 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ButtonHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapPosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RawMapManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/CameraManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapAlgorithms.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ManagerManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AlgorithmTile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UiManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AiManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MapTile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Scripts/RawMapManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ManagerManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MapAlgorithms.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UiManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AiManager.cs" />
+      </list>
+    </option>
   </component>
   <component name="ProjectId" id="1Pn1lUTtMbRtd25kvuSevs9NSMY" />
   <component name="PropertiesComponent">
@@ -59,6 +78,9 @@
       <option name="presentableId" value="Default" />
       <updated>1566495198911</updated>
       <workItem from="1566495202934" duration="629000" />
+      <workItem from="1566683473521" duration="3488000" />
+      <workItem from="1569799276932" duration="600000" />
+      <workItem from="1571174853635" duration="4752000" />
     </task>
     <servers />
   </component>
