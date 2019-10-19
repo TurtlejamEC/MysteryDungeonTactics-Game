@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -77,5 +78,9 @@ public static class MapAlgorithms {
         }
 
         return result;
+    }
+
+    public static int ManhattanDistance(MapPosition a, MapPosition b) {
+        return Math.Abs(a.X - b.X) + Math.Abs(a.Z - b.Z);
     }
 }

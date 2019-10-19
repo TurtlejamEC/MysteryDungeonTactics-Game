@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class UiManager : MonoBehaviour {
 
     public GameObject moveButton;
     public GameObject confirmButton;
+    public GameObject restButton;
 
     public static bool hasFinishedControlling = false;
 
@@ -23,14 +25,27 @@ public class UiManager : MonoBehaviour {
     }
 
     public void BeginPlayerTurn() {
-        UiManager.hasFinishedControlling = false;
+        hasFinishedControlling = false;
         mainUi.SetActive(true);
-        moveButton.SetActive(true);
+        if (CharacterManager.ActiveCharacters[TurnManager.ProgressQueue.Peek().CharacterId].CurrentEnergy > 0) {
+            moveButton.SetActive(true);
+        }
+        restButton.SetActive(true);
+        Debug.Log(CharacterManager.ActiveCharacters[TurnManager.ProgressQueue.Peek().CharacterId].CurrentEnergy);
     }
 
     public void MoveButtonPress() {
         moveButton.SetActive(false);
+        restButton.SetActive(false);
         StartCoroutine(DisplayMoveUi());
+    }
+
+    public void RestButtonPress() {
+        moveButton.SetActive(false);
+        restButton.SetActive(false);
+        int currentId = TurnManager.ProgressQueue.Peek().CharacterId;
+        CharacterManager.ChangeEnergy(currentId, (int) (CharacterManager.ActiveCharacters[currentId].MaxEnergy * 0.5f));
+        hasFinishedControlling = true;
     }
 
     public void ConfirmButtonPress() {
@@ -39,23 +54,18 @@ public class UiManager : MonoBehaviour {
         MapPosition destination = new MapPosition(-1, -1);
         for (int i = 0; i < positionButtons.Count; i++) {
             if (i == selectedMovement) {
-                destination.X = (int)(positionButtons[i].transform.position.x + 0.5);
-                destination.Z = (int)(positionButtons[i].transform.position.z + 0.5);
+                destination.X = (int)(positionButtons[i].transform.position.x + 0.5f);
+                destination.Z = (int)(positionButtons[i].transform.position.z + 0.5f);
             }
             
             Destroy(positionButtons[i]);
         }
         
         positionButtons.Clear();
-        
+
         int currentId = TurnManager.ProgressQueue.Peek().CharacterId;
-        Character current = CharacterManager.ActiveCharacters[currentId];
-        
-        RawMapManager.Map[current.Position.Z][current.Position.X].CharacterId = -1;
-        RawMapManager.Map[destination.Z][destination.X].CharacterId = currentId;
-        CharacterManager.ActiveCharacters[currentId].Position = destination;
-        CharacterManager.ActiveCharacters[currentId].Parent.transform.position = new Vector3(destination.X, 0, destination.Z);
-        
+        ActionManager.MoveCharacter(currentId, destination);
+
         confirmButton.SetActive(false);
         hasSelectedMovement = true;
     }
@@ -65,7 +75,7 @@ public class UiManager : MonoBehaviour {
         Character current = CharacterManager.ActiveCharacters[currentId];
 
         List<AlgorithmTile> possiblePositions = MapAlgorithms.ResultMapToAlgorithmTileList(
-            MapAlgorithms.BfsReturnRange(RawMapManager.Map, current.Position, current.Movement, true, true)
+            MapAlgorithms.BfsReturnRange(RawMapManager.Map, current.Position, Math.Min(current.Movement, current.CurrentEnergy), true, true)
         );
 
         positionButtons = new List<GameObject>();

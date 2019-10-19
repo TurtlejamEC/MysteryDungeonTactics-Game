@@ -6,7 +6,11 @@ using Random = UnityEngine.Random;
 
 public class AiManager : MonoBehaviour {
     public static void CompleteTurn(int characterId) {
-		Move(characterId);
+	    if (CharacterManager.ActiveCharacters[characterId].CurrentEnergy == 0) {
+		    CharacterManager.ChangeEnergy(characterId, (int) (CharacterManager.ActiveCharacters[characterId].MaxEnergy * 0.5f));
+	    } else {
+		    Move(characterId);
+	    }
     }
 
     private static void Move(int characterId) {
@@ -14,11 +18,9 @@ public class AiManager : MonoBehaviour {
 	    Character current = CharacterManager.ActiveCharacters[characterId];
 
 	    List<AlgorithmTile> possiblePositions = MapAlgorithms.ResultMapToAlgorithmTileList(
-		    MapAlgorithms.BfsReturnRange(RawMapManager.Map, current.Position, current.Movement, true, true)
+		    MapAlgorithms.BfsReturnRange(RawMapManager.Map, current.Position, Math.Min(current.Movement, current.CurrentEnergy), true, true)
 		    );
-	    
-	    print(possiblePositions.Count);
-	    
+
 	    // Randomize list
 	    for (int i = possiblePositions.Count - 1; i >= 1; i--) {
 		    int swap = Random.Range(0, i);
@@ -43,9 +45,6 @@ public class AiManager : MonoBehaviour {
 	    }
 	    print(message);*/
 
-	    RawMapManager.Map[current.Position.Z][current.Position.X].CharacterId = -1;
-	    RawMapManager.Map[newPosition.Z][newPosition.X].CharacterId = characterId;
-	    CharacterManager.ActiveCharacters[characterId].Position = newPosition;
-	    CharacterManager.ActiveCharacters[characterId].Parent.transform.position = new Vector3(newPosition.X, 0, newPosition.Z);
+	    ActionManager.MoveCharacter(characterId, newPosition);
     }
 }

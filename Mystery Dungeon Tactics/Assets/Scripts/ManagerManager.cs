@@ -53,12 +53,12 @@ public class ManagerManager : MonoBehaviour {
     void Start() {
         rmManager.GenerateMap();
         rmManager.PrintMap(0);
-        AddCharacter(new Character("A", 1, 0, 10, Instantiate(sampleCharacter), true));
-        AddCharacter(new Character("B", 10, 1, 10, Instantiate(sampleCharacter), false));
-        AddCharacter(new Character("C", 10, 2, 10, Instantiate(sampleCharacter), false));
-        AddCharacter(new Character("D", 10, 3, 10, Instantiate(sampleCharacter), false));
-        AddCharacter(new Character("E", 10, 4, 10, Instantiate(sampleCharacter), false));
-        AddCharacter(new Character("F", 10, 5, 10, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("A", 1, 0, 20, 100, Instantiate(sampleCharacter), true));
+        AddCharacter(new Character("B", 20, 1, 20, 100, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("C", 20, 2, 20, 100, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("D", 20, 3, 20, 100, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("E", 20, 4, 20, 100, Instantiate(sampleCharacter), false));
+        AddCharacter(new Character("F", 20, 5, 20, 100, Instantiate(sampleCharacter), false));
         rmManager.PrintMap(1);
         StartCoroutine(ProgressAndCompleteNextTurn());
     }
