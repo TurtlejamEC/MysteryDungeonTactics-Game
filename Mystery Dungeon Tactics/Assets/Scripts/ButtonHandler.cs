@@ -13,13 +13,13 @@ public class ButtonHandler : MonoBehaviour {
     }
     
     public void SelectMovementOption() {
-        if (UiManager.selectedMovement != -1) {
-            UiManager.positionButtons[UiManager.selectedMovement].GetComponent<Image>().color = Color.white;
+        if (UiManager.selectedPositionId != -1) {
+            UiManager.positionButtons[UiManager.selectedPositionId].GetComponent<Image>().color = Color.white;
         }
         
-        UiManager.selectedMovement = id;
+        UiManager.selectedPositionId = id;
         
-        UiManager.positionButtons[UiManager.selectedMovement].GetComponent<Image>().color = Color.red;
+        UiManager.positionButtons[UiManager.selectedPositionId].GetComponent<Image>().color = Color.red;
     }
     
 }

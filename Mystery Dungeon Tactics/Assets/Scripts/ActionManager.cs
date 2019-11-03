@@ -22,4 +22,11 @@ public class ActionManager : MonoBehaviour
         CharacterManager.ActiveCharacters[characterId].CurrentEnergy -=
             MapAlgorithms.ManhattanDistance(previousPosition, destination);
     }
+
+    public static void DealDamage(int sourceCharacterId, int targetCharacterId) {
+        int damage = CharacterManager.DamageCurve(CharacterManager.ActiveCharacters[sourceCharacterId].Attack,
+            CharacterManager.ActiveCharacters[targetCharacterId].Defense);
+        CharacterManager.ChangeHp(targetCharacterId, -damage);
+    }
+    
 }

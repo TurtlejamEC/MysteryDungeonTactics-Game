@@ -30,6 +30,7 @@
           <e p="CharacterManager.cs" t="Include" />
           <e p="CharacterTurnController.cs" t="Include" />
           <e p="ColorAssigner.cs" t="Include" />
+          <e p="InputManager.cs" t="Include" />
           <e p="ManagerManager.cs" t="Include" />
           <e p="MapAlgorithms.cs" t="Include" />
           <e p="MapPosition.cs" t="Include" />
