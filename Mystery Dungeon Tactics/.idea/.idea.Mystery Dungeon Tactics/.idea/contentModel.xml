@@ -21,26 +21,33 @@
           <e p="TestMap.txt" t="Include" />
         </e>
         <e p="Scripts" t="Include">
-          <e p="ActionManager.cs" t="Include" />
-          <e p="AiManager.cs" t="Include" />
+          <e p="Ability.cs" t="Include" />
+          <e p="AbilityButtonHandler.cs" t="Include" />
           <e p="AlgorithmTile.cs" t="Include" />
           <e p="ButtonHandler.cs" t="Include" />
-          <e p="CameraManager.cs" t="Include" />
           <e p="Character.cs" t="Include" />
-          <e p="CharacterManager.cs" t="Include" />
           <e p="CharacterTurnController.cs" t="Include" />
           <e p="ColorAssigner.cs" t="Include" />
-          <e p="InputManager.cs" t="Include" />
-          <e p="ManagerManager.cs" t="Include" />
+          <e p="JsonHelper.cs" t="Include" />
+          <e p="Managers" t="Include">
+            <e p="AbilityManager.cs" t="Include" />
+            <e p="ActionManager.cs" t="Include" />
+            <e p="AiManager.cs" t="Include" />
+            <e p="CameraManager.cs" t="Include" />
+            <e p="CharacterManager.cs" t="Include" />
+            <e p="InputManager.cs" t="Include" />
+            <e p="ManagerManager.cs" t="Include" />
+            <e p="RawMapManager.cs" t="Include" />
+            <e p="TurnManager.cs" t="Include" />
+            <e p="UiManager.cs" t="Include" />
+          </e>
           <e p="MapAlgorithms.cs" t="Include" />
           <e p="MapPosition.cs" t="Include" />
           <e p="MapTile.cs" t="Include" />
           <e p="ProgressQueueUnit.cs" t="Include" />
-          <e p="RawMapManager.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
-          <e p="TurnManager.cs" t="Include" />
-          <e p="UiManager.cs" t="Include" />
         </e>
+        <e p="Spikey Game Ability List.txt" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />

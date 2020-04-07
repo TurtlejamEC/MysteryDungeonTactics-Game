@@ -1,0 +1,2 @@
+﻿[{"id":0,"name":"Basic","element":6,"modiferMode":0,"modifierValue":0,"range":1,"shapeType":0,"shapeSize":0,"effect":"[]"},
+{"id":1,"name":"Flame Breath","element":3,"modiferMode":1,"modifierValue":2,"range":2,"shapeType":1,"shapeSize":3,"effect":"[1]"}]
